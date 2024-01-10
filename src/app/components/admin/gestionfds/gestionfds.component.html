@@ -4,7 +4,7 @@
         <th mat-header-cell *matHeaderCellDef> Nom de la Fiche </th>
         <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.name }} </td>
     </ng-container>
-    
+
     <ng-container matColumnDef="dateCreationFiche">
         <th mat-header-cell *matHeaderCellDef> Date Création </th>
         <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.dateCreation | date }} </td>
@@ -32,7 +32,8 @@
         <td mat-cell *matCellDef="let element">
             <mat-form-field>
                 <mat-label>Statut</mat-label>
-                <mat-select [(value)]="element.ficheSecurite.statut">
+                <mat-select [(value)]="element.ficheSecurite.statut" [disabled]="element.ficheSecurite.statut === 'inactive'" 
+                (selectionChange)="enregistrerStatutFiche(element.ficheSecurite)">
                     <mat-option value="active">Active</mat-option>
                     <mat-option value="inactive">Inactive</mat-option>
                 </mat-select>
@@ -40,12 +41,7 @@
         </td>
     </ng-container>
 
-    <ng-container matColumnDef="enregistrer">
-        <th mat-header-cell *matHeaderCellDef>  </th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-button (click)="enregistrerStatutFiche(element.ficheSecurite)">Enregistrer</button>
-        </td>
-    </ng-container>
+
     
     
 

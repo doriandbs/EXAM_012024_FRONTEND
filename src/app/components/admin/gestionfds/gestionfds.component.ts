@@ -10,7 +10,7 @@ import { FdsProduit } from '../../../models/FdsProduit';
 })
 export class GestionfdsComponent {
   fds: FdsProduit[] = [];
-  displayedColumns: string[] = ['nomFiche', 'dateCreationFiche', 'dateMajFiche','nomProduit', 'telecharger','statut','enregistrer'];
+  displayedColumns: string[] = ['nomFiche', 'dateCreationFiche', 'dateMajFiche','nomProduit', 'telecharger','statut'];
 
   constructor(private adminService: AdminService) { }
 
