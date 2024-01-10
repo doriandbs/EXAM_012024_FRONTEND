@@ -25,7 +25,7 @@ export class AdminService {
   }
 
   updateStatutFiche(ficheId: number, nouveauStatut: string): Observable<any> {
-    return this.http.put(`${BASE_URL}/fds/${ficheId}/admin/updatestatut`, {statut : nouveauStatut}) ;
+    return this.http.put(`${BASE_URL}/admin/fds/${ficheId}/updatestatut`, {statut : nouveauStatut}) ;
   }
 
   getProduits():Observable<Produits[]>{
