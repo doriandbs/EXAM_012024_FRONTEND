@@ -1,0 +1,50 @@
+<table mat-table [dataSource]="fds" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let fiche"> {{ fiche.nom }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateCreation">
+        <th mat-header-cell *matHeaderCellDef> Date Création </th>
+        <td mat-cell *matCellDef="let fiche"> {{ fiche.dateCreation  }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateMaj">
+        <th mat-header-cell *matHeaderCellDef> Date Mise à Jour </th>
+        <td mat-cell *matCellDef="let fiche"> {{ fiche.dateMaj}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telecharger">
+        <th mat-header-cell *matHeaderCellDef> Télécharger </th>
+        <td mat-cell *matCellDef="let fiche">
+            <button mat-raised-button color="primary" (click)="telechargerPdf(fiche)">Télécharger</button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="statut">
+        <th mat-header-cell *matHeaderCellDef> Statut </th>
+        <td mat-cell *matCellDef="let fiche">
+            <mat-form-field>
+                <mat-label>Statut</mat-label>
+                <mat-select [(value)]="fiche.statut">
+                    <mat-option value="active">Active</mat-option>
+                    <mat-option value="inactive">Inactive</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="enregistrer">
+        <th mat-header-cell *matHeaderCellDef> Enregistrer </th>
+        <td mat-cell *matCellDef="let fiche">
+            <button mat-button (click)="enregistrerStatutFiche(fiche)">Enregistrer</button>
+        </td>
+    </ng-container>
+    
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+</table>

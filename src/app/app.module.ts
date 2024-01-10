@@ -17,6 +17,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { HeaderComponent } from './components/header/header.component';
+import { GestionclientComponent } from './components/admin/gestionclient/gestionclient.component';
+import { GestionproduitComponent } from './components/admin/gestionproduit/gestionproduit.component';
+import { GestionfdsComponent } from './components/admin/gestionfds/gestionfds.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -28,7 +32,10 @@ import { HeaderComponent } from './components/header/header.component';
     LoginComponent,
     AdminComponent,
     ClientComponent,
-    HeaderComponent
+    HeaderComponent,
+    GestionclientComponent,
+    GestionproduitComponent,
+    GestionfdsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
