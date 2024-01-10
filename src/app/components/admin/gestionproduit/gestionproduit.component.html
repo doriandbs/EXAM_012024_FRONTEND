@@ -1,1 +1,31 @@
-<p>gestionproduit works!</p>
+<table mat-table [dataSource]="produits" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="produits">
+        <th mat-header-cell *matHeaderCellDef> Nom produit </th>
+        <td mat-cell *matCellDef="let produit"> {{ produit.nom }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fiches">
+        <th mat-header-cell *matHeaderCellDef> Fiches </th>
+        <td mat-cell *matCellDef="let produit">
+            <div *ngFor="let fiche of produit.fiches">
+                {{ fiche.nom }}
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+</table>
+
+<form (ngSubmit)="ajouterProduit()">
+    <mat-form-field>
+        <mat-label>Nom du produit</mat-label>
+        <input matInput  name="nom" required>
+    </mat-form-field>
+
+    <input type="file"  accept=".pdf"/>
+
+    <button mat-raised-button color="primary" type="submit">Ajouter le produit</button>
+</form>

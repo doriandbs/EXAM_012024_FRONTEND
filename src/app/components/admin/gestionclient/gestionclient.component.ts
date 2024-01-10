@@ -11,12 +11,26 @@ export class GestionclientComponent {
   clients: Utilisateur[] = [];
   displayedColumns: string[] = ['username', 'produits'];
 
+  nouveauClient = { username: '', password: '', mail: '' };
+
+
   constructor(private adminService: AdminService) { }
 
   
   ngOnInit(): void {
+    this.getClient();
+  }
+
+  getClient(){
     this.adminService.getClients().subscribe(data => {
       this.clients = data;
-    }, error => console.error(error));
+    });
+  }
+
+  ajouterClient() {
+    this.adminService.ajouterClient(this.nouveauClient.username,this.nouveauClient.password, this.nouveauClient.mail).subscribe(data => {
+      this.nouveauClient = { username: '', password: '',mail:'' };
+      this.getClient();
+    });
   }
 }
