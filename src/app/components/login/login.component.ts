@@ -16,6 +16,22 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthentificationService, private router: Router) { }
 
   ngOnInit(): void {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      const userDetailsString = localStorage.getItem('userDetails');
+      if (userDetailsString) {
+        const userDetails = JSON.parse(userDetailsString);
+        const isAdmin = userDetails.authorities.some((auth: { authority: string; }) => auth.authority === 'ROLE_ADMIN');
+        
+        if (isAdmin) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/client']);
+        }
+      } else {
+        this.router.navigate(['/login']);
+      }
+    }
   }
 
   login(): void {

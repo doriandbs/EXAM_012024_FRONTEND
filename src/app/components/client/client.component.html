@@ -1,1 +1,47 @@
-<p>client works!</p>
+<mat-form-field>
+    <mat-label>Barre de recherche</mat-label>
+    <input matInput [formControl]="rechercheControl">
+</mat-form-field>
+
+
+  
+  <table mat-table [dataSource]="produits" class="mat-elevation-z8">
+  
+    
+  <ng-container matColumnDef="nomProduit">
+    <th mat-header-cell *matHeaderCellDef> Nom produit </th>
+    <td mat-cell *matCellDef="let produit"> {{ produit.nom }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fds">
+    <th mat-header-cell *matHeaderCellDef> Fiches Données Sécurité </th>
+    <td mat-cell *matCellDef="let produit">
+        <div *ngFor="let fiche of produit.fiches">
+            <a href="#" (click)="telechargerPdf(fiche)">{{ fiche.nom }}</a>
+        </div>
+    </td>
+</ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date création</th>
+    <td mat-cell *matCellDef="let produit"> 
+        <div *ngFor="let fiche of produit.fiches">
+            {{ fiche.dateCreation | date: 'dd/MM/yyyy' }}     
+         </div> 
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="statut">
+    <th mat-header-cell *matHeaderCellDef> Statut</th>
+    <td mat-cell *matCellDef="let produit"> 
+        <div *ngFor="let fiche of produit.fiches">
+            {{ fiche.statut }}     
+         </div> 
+    </td>
+  </ng-container>
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
