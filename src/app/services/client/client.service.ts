@@ -13,6 +13,6 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   getProduits(): Observable<any> {
-    return this.http.get(BASE_URL + "/user/produits");
+    return this.http.get(BASE_URL + "/societe/produits");
   }
 }

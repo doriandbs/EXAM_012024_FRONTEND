@@ -9,10 +9,10 @@ export class AdminGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const userDetailsString = localStorage.getItem('userDetails');
-    if (userDetailsString) {
-      const userDetails = JSON.parse(userDetailsString);
-      const isAdmin = userDetails.authorities.some((auth: { authority: string; }) => auth.authority === 'ROLE_ADMIN');
+    const societeDetailsString = localStorage.getItem('societeDetails');
+    if (societeDetailsString) {
+      const societeDetails = JSON.parse(societeDetailsString);
+      const isAdmin = societeDetails.authorities.some((auth: { authority: string; }) => auth.authority === 'ROLE_ADMIN');
       if (isAdmin) {
         return true;
       }

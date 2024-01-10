@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../../services/admin/admin.service';
-import { Utilisateur } from '../../../models/Utilisateur';
+import { Societe } from '../../../models/Societe';
 
 @Component({
   selector: 'app-gestionclient',
@@ -8,10 +8,10 @@ import { Utilisateur } from '../../../models/Utilisateur';
   styleUrl: './gestionclient.component.scss'
 })
 export class GestionclientComponent {
-  clients: Utilisateur[] = [];
-  displayedColumns: string[] = ['username', 'produits'];
+  clients: Societe[] = [];
+  displayedColumns: string[] = ['nomsociete', 'produits'];
 
-  nouveauClient = { username: '', password: '', mail: '' };
+  nouveauClient = { nomsociete: '', password: '', mail: '' };
 
 
   constructor(private adminService: AdminService) { }
@@ -28,8 +28,8 @@ export class GestionclientComponent {
   }
 
   ajouterClient() {
-    this.adminService.ajouterClient(this.nouveauClient.username,this.nouveauClient.password, this.nouveauClient.mail).subscribe(data => {
-      this.nouveauClient = { username: '', password: '',mail:'' };
+    this.adminService.ajouterClient(this.nouveauClient.nomsociete,this.nouveauClient.password, this.nouveauClient.mail).subscribe(data => {
+      this.nouveauClient = { nomsociete: '', password: '',mail:'' };
       this.getClient();
     });
   }

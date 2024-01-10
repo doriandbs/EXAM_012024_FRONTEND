@@ -18,7 +18,7 @@ export class HeaderComponent {
 
   logout(): void {
     localStorage.removeItem('jwt');
-    localStorage.removeItem('userDetails');
+    localStorage.removeItem('societeDetails');
 
     this.isConnected = false;
   }

@@ -12,8 +12,8 @@ export class AuthentificationService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
-    const response = this.http.post(BASE_URL + "/login", { username, password });
+  login(nomsociete: string, password: string): Observable<any> {
+    const response = this.http.post(BASE_URL + "/login", { nomsociete, password });
     return response;
   }
 }

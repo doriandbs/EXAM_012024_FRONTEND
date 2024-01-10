@@ -1,8 +1,8 @@
 <table mat-table [dataSource]="clients" class="mat-elevation-z8">
   
-    <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef> Nom d'utilisateur </th>
-        <td mat-cell *matCellDef="let client"> {{ client.username }} </td>
+    <ng-container matColumnDef="nomsociete">
+        <th mat-header-cell *matHeaderCellDef> Nom société </th>
+        <td mat-cell *matCellDef="let client"> {{ client.nomsociete }} </td>
     </ng-container>
 
     <ng-container matColumnDef="produits">
@@ -23,7 +23,7 @@
 <form (ngSubmit)="ajouterClient()">
     <mat-form-field>
         <mat-label>Nom client</mat-label>
-        <input matInput [(ngModel)]="nouveauClient.username" name="username" required>
+        <input matInput [(ngModel)]="nouveauClient.nomsociete" name="nomsociete" required>
     </mat-form-field>
 
     <mat-form-field>
@@ -37,5 +37,5 @@
     </mat-form-field>
     
 
-    <button mat-raised-button color="primary" type="submit">Ajouter l'utilisateur</button>
+    <button mat-raised-button color="primary" type="submit">Ajouter la société</button>
 </form>

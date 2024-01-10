@@ -1,7 +1,7 @@
 import { Produits } from "./Produit";
 
-export interface Utilisateur{
-    username : string;
+export interface Societe{
+    nomsociete : string;
     password: string;
     produits : Array<Produits>;
 }

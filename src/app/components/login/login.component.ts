@@ -9,7 +9,7 @@ import { AuthentificationService } from '../../services/authentification/authent
 })
 export class LoginComponent implements OnInit {
 
-  username: string = '';
+  nomsociete: string = '';
   password: string = '';
   errorMessage: string = '';
 
@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      const userDetailsString = localStorage.getItem('userDetails');
-      if (userDetailsString) {
-        const userDetails = JSON.parse(userDetailsString);
-        const isAdmin = userDetails.authorities.some((auth: { authority: string; }) => auth.authority === 'ROLE_ADMIN');
+      const societeDetailsString = localStorage.getItem('societeDetails');
+      if (societeDetailsString) {
+        const societeDetails = JSON.parse(societeDetailsString);
+        const isAdmin = societeDetails.authorities.some((auth: { authority: string; }) => auth.authority === 'ROLE_ADMIN');
         
         if (isAdmin) {
           this.router.navigate(['/admin']);
@@ -35,11 +35,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.login(this.nomsociete, this.password).subscribe(
       data => {
         localStorage.setItem('jwt', data.jwt);
-        localStorage.setItem('userDetails', JSON.stringify(data.user));
-        this.redirectUser();
+        localStorage.setItem('societeDetails', JSON.stringify(data.societe));
+        this.redirectSociete();
       },
       error => {
         this.errorMessage = 'Échec de la connexion. Veuillez réessayer.';
@@ -47,11 +47,11 @@ export class LoginComponent implements OnInit {
     );
   }
   
-  redirectUser(): void {
-    const userString = localStorage.getItem('userDetails');
-    if(userString){
-      const user = JSON.parse(userString);
-      const isAdmin=user.authorities.some((auth: { authority: string; })=> auth.authority ==='ROLE_ADMIN');
+  redirectSociete(): void {
+    const societeString = localStorage.getItem('societeDetails');
+    if(societeString){
+      const societe = JSON.parse(societeString);
+      const isAdmin=societe.authorities.some((auth: { authority: string; })=> auth.authority ==='ROLE_ADMIN');
       if (isAdmin) {
         this.router.navigate(['/admin']);
       } else {
