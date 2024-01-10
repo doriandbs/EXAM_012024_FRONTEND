@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Fds } from '../../../models/Fds';
 import { AdminService } from '../../../services/admin/admin.service';
+import { FdsProduit } from '../../../models/FdsProduit';
 
 @Component({
   selector: 'app-gestionfds',
@@ -8,8 +9,8 @@ import { AdminService } from '../../../services/admin/admin.service';
   styleUrl: './gestionfds.component.scss'
 })
 export class GestionfdsComponent {
-  fds: Fds[] = [];
-  displayedColumns: string[] = ['nom', 'dateCreation', 'dateMaj', 'telecharger','statut','enregistrer'];
+  fds: FdsProduit[] = [];
+  displayedColumns: string[] = ['nomFiche', 'dateCreationFiche', 'dateMajFiche','nomProduit', 'telecharger','statut','enregistrer'];
 
   constructor(private adminService: AdminService) { }
 
@@ -21,11 +22,10 @@ export class GestionfdsComponent {
   getFds(){
     this.adminService.getFds().subscribe(data => {
       this.fds = data;
-      console.log(this.fds)
     }, error => console.error(error));
   }
-  telechargerPdf(fiche: Fds): void {
-    const byteCharacters = atob(fiche.pdfContent); 
+  telechargerPdf(titre: string, pdfContent: string): void {
+    const byteCharacters = atob(pdfContent); 
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
         byteNumbers[i] = byteCharacters.charCodeAt(i);
@@ -35,7 +35,7 @@ export class GestionfdsComponent {
     const url = window.URL.createObjectURL(blob);
     const anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = `${fiche.nom}.pdf`;
+    anchor.download = `${titre}.pdf`;
     anchor.click();
     window.URL.revokeObjectURL(url);
 }

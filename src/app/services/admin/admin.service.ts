@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utilisateur } from '../../models/Utilisateur';
 import { Fds } from '../../models/Fds';
+import { FdsProduit } from '../../models/FdsProduit';
 
 
 const BASE_URL = ['http://localhost:8080/admin']
@@ -18,8 +19,8 @@ export class AdminService {
     return this.http.get<Utilisateur[]>(`${BASE_URL}/users/clients`);
   }
 
-  getFds(): Observable<Fds[]> {
-    return this.http.get<Fds[]>(`${BASE_URL}/fds/`);
+  getFds(): Observable<FdsProduit[]> {
+    return this.http.get<FdsProduit[]>(`${BASE_URL}/fds/`);
   }
 
   updateStatutFiche(ficheId: number, nouveauStatut: string): Observable<any> {

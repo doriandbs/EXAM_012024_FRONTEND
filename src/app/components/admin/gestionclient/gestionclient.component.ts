@@ -17,7 +17,6 @@ export class GestionclientComponent {
   ngOnInit(): void {
     this.adminService.getClients().subscribe(data => {
       this.clients = data;
-      console.log(data);
     }, error => console.error(error));
   }
 }

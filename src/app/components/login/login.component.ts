@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
     if(userString){
       const user = JSON.parse(userString);
       const isAdmin=user.authorities.some((auth: { authority: string; })=> auth.authority ==='ROLE_ADMIN');
-      console.log(isAdmin)
       if (isAdmin) {
         this.router.navigate(['/admin']);
       } else {
