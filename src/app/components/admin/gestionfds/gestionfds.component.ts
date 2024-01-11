@@ -10,6 +10,8 @@ import { Produits } from '../../../models/Produit';
   styleUrl: './gestionfds.component.scss'
 })
 export class GestionfdsComponent {
+
+  produitDejaCree: boolean = false;
   nomFichier: string = '';
   produitSelectionne: string = '';
   fichierPDF: File | null = null;
@@ -69,23 +71,38 @@ export class GestionfdsComponent {
   }
 
   onSubmit(): void {
-    if (this.nomFichier && this.produitSelectionne && this.fichierPDF) {
-      const formData = new FormData();
-      formData.append('nomFichier', this.nomFichier);
-      formData.append('produitId', this.produitSelectionne);
-      formData.append('fichier', this.fichierPDF);
-
-      this.adminService.envoyerFichierPDF(formData).subscribe(response => {
-        this.nomFichier = '';
-        this.produitSelectionne = '';
-        this.fichierPDF = null;
-        this.resetFileInput();
-        this.getFds();
-        
-      });
+    const formData = new FormData();
+  
+    if (!this.produitDejaCree) {
+      if (this.nomFichier && this.fichierPDF) {
+        formData.append('nomFichier', this.nomFichier);
+        formData.append('fichier', this.fichierPDF);
+        this.produitSelectionne==null;
+        formData.append('produitId', this.produitSelectionne);
+      } else {
+        console.error('Nom fichier et fichier requis');
+        return;
+      }
+    } else {
+      if (this.nomFichier && this.produitSelectionne && this.fichierPDF) {
+        formData.append('nomFichier', this.nomFichier);
+        formData.append('produitId', this.produitSelectionne);
+        formData.append('fichier', this.fichierPDF);
+      } else {
+        console.error('Tout les champs requis');
+        return;
+      }
     }
+  
+    this.adminService.envoyerFichierPDF(formData).subscribe(response => {
+      this.nomFichier = '';
+      this.produitSelectionne = '';
+      this.fichierPDF = null;
+      this.resetFileInput();
+      this.getFds();
+    });
   }
-
+    
   resetFileInput(): void {
     let input = document.querySelector('input[type="file"]') as HTMLInputElement;
     if (input) input.value = '';

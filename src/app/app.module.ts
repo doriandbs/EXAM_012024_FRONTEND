@@ -21,6 +21,8 @@ import { GestionclientComponent } from './components/admin/gestionclient/gestion
 import { GestionproduitComponent } from './components/admin/gestionproduit/gestionproduit.component';
 import { GestionfdsComponent } from './components/admin/gestionfds/gestionfds.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 
 
@@ -49,7 +51,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatTableModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]

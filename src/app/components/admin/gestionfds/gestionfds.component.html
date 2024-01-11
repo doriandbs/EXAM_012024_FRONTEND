@@ -51,8 +51,11 @@
       <mat-label>Nom du fichier</mat-label>
       <input matInput [(ngModel)]="nomFichier" name="nomFichier" required>
     </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="produitDejaCree" name="produitDejaCree">Produit déjà créé</mat-checkbox>
   
-    <mat-form-field>
+
+    <mat-form-field *ngIf="produitDejaCree">
       <mat-label>Produit</mat-label>
       <mat-select [(ngModel)]="produitSelectionne" name="produitSelectionne" required>
         <mat-option *ngFor="let produit of produits" [value]="produit.id">
