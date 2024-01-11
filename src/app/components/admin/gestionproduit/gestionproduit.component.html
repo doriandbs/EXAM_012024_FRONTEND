@@ -25,5 +25,20 @@
         <input matInput [(ngModel)]="nouveauProduit.nom" name="nom" required>
     </mat-form-field>
 
+    <mat-checkbox [(ngModel)]="ficheDejaCree" name="ficheDejaCree">Fiche déjà créée</mat-checkbox>
+
+    
+        <input  *ngIf="!ficheDejaCree" type="file" (change)="onFileSelected($event)" accept=".pdf" required>
+
+
+        <mat-form-field *ngIf="ficheDejaCree">
+            <mat-label>Fiche</mat-label>
+            <mat-select [(ngModel)]="ficheSelectionne" name="ficheSelectionne" required>
+              <mat-option *ngFor="let fiche of fds" [value]="fiche.id">
+                {{ fiche.nom }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
     <button mat-raised-button color="primary" type="submit">Ajouter le produit</button>
 </form>

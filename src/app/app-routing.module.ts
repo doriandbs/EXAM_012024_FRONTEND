@@ -13,9 +13,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'client', component: ClientComponent, canActivate: [AuthGuard] },
-  { path: 'gestion-client', component: GestionclientComponent },
-  { path: 'gestion-fds', component: GestionfdsComponent },
-  { path: 'gestion-produits', component: GestionproduitComponent },
+  { path: 'gestion-client', component: GestionclientComponent, canActivate:[AdminGuard]},
+  { path: 'gestion-fds', component: GestionfdsComponent, canActivate:[AdminGuard] },
+  { path: 'gestion-produits', component: GestionproduitComponent, canActivate:[AdminGuard] },
 
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

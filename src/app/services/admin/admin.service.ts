@@ -37,9 +37,8 @@ export class AdminService {
     return this.http.get<Produits[]>(`${BASE_URL}/produits/`);
   }
 
-  ajouterProduit(nouveauProduit: string): Observable<Produits> {
-    const produitData = { nom: nouveauProduit };
-    return this.http.post<Produits>(`${BASE_URL}/produits/add`, produitData);
+  ajouterProduit(formData: FormData): Observable<Produits> {
+    return this.http.post<Produits>(`${BASE_URL}/produits/add`, formData);
   }
   
 
@@ -49,5 +48,9 @@ export class AdminService {
 
   envoyerFichierPDF(formData: FormData): Observable<any> {
     return this.http.post<any>(`${BASE_URL}/admin/fds/upload`, formData);
+  }
+
+  getFdsSansProduits():Observable<Fds[]>{
+    return this.http.get<Fds[]>(`${BASE_URL}/admin/fds/withoutProduct`);
   }
 }
