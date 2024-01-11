@@ -42,10 +42,26 @@
     </ng-container>
 
 
-    
-    
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
 </table>
+<form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Nom du fichier</mat-label>
+      <input matInput [(ngModel)]="nomFichier" name="nomFichier" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Produit</mat-label>
+      <mat-select [(ngModel)]="produitSelectionne" name="produitSelectionne" required>
+        <mat-option *ngFor="let produit of produits" [value]="produit.id">
+          {{ produit.nom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <input type="file" (change)="onFileSelected($event)" accept=".pdf" required>
+  
+    <button mat-raised-button color="primary" type="submit">Envoyer</button>
+  </form>

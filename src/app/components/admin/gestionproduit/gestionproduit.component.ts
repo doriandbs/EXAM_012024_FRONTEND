@@ -14,24 +14,28 @@ export class GestionproduitComponent {
 
   nouveauProduit = {
     nom: '',
-    fichierPdf: null
   };
 
   constructor(private adminService: AdminService) { }
 
   
   ngOnInit(): void {
-    this.adminService.getProduits().subscribe(data => {
-      this.produits = data;
-      console.log(this.produits)
-    }, error => console.error(error));
+    this.getProduits();
   }
 
-  ajouterProduit() {
-    this.adminService.ajouterProduit(this.nouveauProduit).subscribe(data => {
-      console.log(data)
+
+  getProduits(){
+    this.adminService.getProduits().subscribe(data => {
+      this.produits = data;
     });
-    this.nouveauProduit = { nom: '', fichierPdf: null };
+  }
+  
+
+  ajouterProduit() {
+    this.adminService.ajouterProduit(this.nouveauProduit.nom).subscribe(data => {
+      this.getProduits();
+    });
+    this.nouveauProduit = { nom: ''};
   }
 }
 

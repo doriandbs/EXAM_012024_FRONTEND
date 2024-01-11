@@ -29,15 +29,25 @@ export class AdminService {
   }
 
   getProduits():Observable<Produits[]>{
+    return this.http.get<Produits[]>(`${BASE_URL}/produits/fds`);
+  }
+
+
+  getAllProduits():Observable<Produits[]>{
     return this.http.get<Produits[]>(`${BASE_URL}/produits/`);
   }
 
-  ajouterProduit(nouveauProduit : any):Observable<Produits>{
-    return this.http.post<Produits>(`${BASE_URL}/produits/add`, {newProduit : nouveauProduit});
+  ajouterProduit(nouveauProduit: string): Observable<Produits> {
+    const produitData = { nom: nouveauProduit };
+    return this.http.post<Produits>(`${BASE_URL}/produits/add`, produitData);
   }
+  
 
   ajouterClient(nomsociete : string, password: string, mail: string):Observable<any>{
     return this.http.post<any>(`${BASE_URL}/admin/societes/addClient`,{ nomsociete, password, mail });
+  }
 
+  envoyerFichierPDF(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${BASE_URL}/admin/fds/upload`, formData);
   }
 }

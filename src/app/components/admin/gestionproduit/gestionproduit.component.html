@@ -22,10 +22,8 @@
 <form (ngSubmit)="ajouterProduit()">
     <mat-form-field>
         <mat-label>Nom du produit</mat-label>
-        <input matInput  name="nom" required>
+        <input matInput [(ngModel)]="nouveauProduit.nom" name="nom" required>
     </mat-form-field>
-
-    <input type="file"  accept=".pdf"/>
 
     <button mat-raised-button color="primary" type="submit">Ajouter le produit</button>
 </form>
