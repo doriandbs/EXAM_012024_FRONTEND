@@ -23,6 +23,7 @@ import { GestionfdsComponent } from './components/admin/gestionfds/gestionfds.co
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { InactiveComponent } from './components/admin/gestionfds/inactive/inactive.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 

@@ -1,8 +1,16 @@
+<div class="pseudo-header">
+  <button routerLink="/gestion-client">Gestion Client</button>
+  <button routerLink="/gestion-fds">Gestion FDS</button>
+  <button routerLink="/gestion-produits">Gestion Produits</button>
 
-<button routerLink="/fds-inactive">FDS INACTIVE</button>
+
+  <button routerLink="/fds-inactive">FDS INACTIVE</button>
+</div>
+
+<h1>Gestion FDS</h1>
 
 <table mat-table [dataSource]="fds" class="mat-elevation-z8">
-  
+
        <ng-container matColumnDef="nomFiche">
         <th mat-header-cell *matHeaderCellDef> Nom de la Fiche </th>
         <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.name }} </td>
@@ -31,7 +39,7 @@
         <td mat-cell *matCellDef="let element">
             <mat-form-field>
                 <mat-label>Statut</mat-label>
-                <mat-select [(value)]="element.ficheSecurite.statut" [disabled]="element.ficheSecurite.statut === 'inactive'" 
+                <mat-select [(value)]="element.ficheSecurite.statut" [disabled]="element.ficheSecurite.statut === 'inactive'"
                 (selectionChange)="enregistrerStatutFiche(element.ficheSecurite)">
                     <mat-option value="active">Active</mat-option>
                     <mat-option value="inactive">Inactive</mat-option>
@@ -43,7 +51,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
+
 </table>
 <form (submit)="onSubmit()">
     <mat-form-field>
@@ -52,7 +60,7 @@
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="produitDejaCree" name="produitDejaCree">Produit déjà créé</mat-checkbox>
-  
+
 
     <mat-form-field *ngIf="produitDejaCree">
       <mat-label>Produit</mat-label>
@@ -63,9 +71,9 @@
       </mat-select>
     </mat-form-field>
 
-    
-  
+
+
     <input type="file" (change)="onFileSelected($event)" accept=".pdf" required>
-  
+
     <button mat-raised-button color="primary" type="submit">Envoyer</button>
   </form>

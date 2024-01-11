@@ -1,5 +1,13 @@
+<div class="pseudo-header">
+  <button routerLink="/gestion-client">Gestion Client</button>
+  <button routerLink="/gestion-fds">Gestion FDS</button>
+  <button routerLink="/gestion-produits">Gestion Produits</button>
+</div>
+
+<h1>Gestion Produit</h1>
+
 <table mat-table [dataSource]="produits" class="mat-elevation-z8">
-  
+
     <ng-container matColumnDef="produits">
         <th mat-header-cell *matHeaderCellDef> Nom produit </th>
         <td mat-cell *matCellDef="let produit"> {{ produit.nom }} </td>
@@ -16,7 +24,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
+
 </table>
 
 <form (ngSubmit)="ajouterProduit()">
@@ -27,7 +35,7 @@
 
     <mat-checkbox [(ngModel)]="ficheDejaCree" name="ficheDejaCree">Fiche déjà créée</mat-checkbox>
 
-    
+
         <input  *ngIf="!ficheDejaCree" type="file" (change)="onFileSelected($event)" accept=".pdf" required>
 
 
@@ -39,6 +47,6 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-    
+
     <button mat-raised-button color="primary" type="submit">Ajouter le produit</button>
 </form>

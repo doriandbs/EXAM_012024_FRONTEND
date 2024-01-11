@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../../services/authentification/authentification.service';
+import { FormControl } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
       if (societeDetailsString) {
         const societeDetails = JSON.parse(societeDetailsString);
         const isAdmin = societeDetails.authorities.some((auth: { authority: string; }) => auth.authority === 'ROLE_ADMIN');
-        
+
         if (isAdmin) {
           this.router.navigate(['/admin']);
         } else {
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  
+
   redirectSociete(): void {
     const societeString = localStorage.getItem('societeDetails');
     if(societeString){
@@ -58,10 +60,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/client']);
       }
     }
-    
+
   }
-  
-  
-  
+
+
+
 
 }

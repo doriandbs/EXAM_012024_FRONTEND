@@ -1,5 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+// variables globales
+$primary-color: #09003F;
+$secondary-color: #303131;
+$hover-color: #2E1E8F;
+$background-color: #FBFBFF;
+$link-color: #002DA1;
+$error-color: #A1000A;
+$success-color: #0DA100;
+
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $background-color;
+}
+
+
+
+h1, h2, h3, p{
+  color: $secondary-color;
+}
