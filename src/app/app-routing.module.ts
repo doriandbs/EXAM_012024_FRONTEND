@@ -8,6 +8,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { GestionclientComponent } from './components/admin/gestionclient/gestionclient.component';
 import { GestionfdsComponent } from './components/admin/gestionfds/gestionfds.component';
 import { GestionproduitComponent } from './components/admin/gestionproduit/gestionproduit.component';
+import { InactiveComponent } from './components/admin/gestionfds/inactive/inactive.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'gestion-client', component: GestionclientComponent, canActivate:[AdminGuard]},
   { path: 'gestion-fds', component: GestionfdsComponent, canActivate:[AdminGuard] },
   { path: 'gestion-produits', component: GestionproduitComponent, canActivate:[AdminGuard] },
+  { path: 'fds-inactive', component: InactiveComponent, canActivate:[AdminGuard] },
+
 
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

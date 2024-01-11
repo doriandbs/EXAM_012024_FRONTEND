@@ -22,6 +22,7 @@ import { GestionproduitComponent } from './components/admin/gestionproduit/gesti
 import { GestionfdsComponent } from './components/admin/gestionfds/gestionfds.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { InactiveComponent } from './components/admin/gestionfds/inactive/inactive.component';
 
 
 
@@ -37,7 +38,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     HeaderComponent,
     GestionclientComponent,
     GestionproduitComponent,
-    GestionfdsComponent
+    GestionfdsComponent,
+    InactiveComponent
   ],
   imports: [
     BrowserModule,

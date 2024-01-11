@@ -17,7 +17,7 @@ export class GestionfdsComponent {
   fichierPDF: File | null = null;
   fds: FdsProduit[] = [];
   produits : Produits[] = [];
-  displayedColumns: string[] = ['nomFiche', 'dateCreationFiche', 'dateMajFiche','nomProduit', 'telecharger','statut'];
+  displayedColumns: string[] = ['nomFiche', 'dateCreationFiche','nomProduit', 'telecharger','statut'];
 
   constructor(private adminService: AdminService) { }
 
@@ -33,7 +33,7 @@ export class GestionfdsComponent {
     }, error => console.error(error));
   }
   getFds(){
-    this.adminService.getFds().subscribe(data => {
+    this.adminService.getFdsByStatut('active').subscribe(data => {
       this.fds = data;
     }, error => console.error(error));
   }

@@ -20,8 +20,8 @@ export class AdminService {
     return this.http.get<Societe[]>(`${BASE_URL}/admin/societes/clients`);
   }
 
-  getFds(): Observable<FdsProduit[]> {
-    return this.http.get<FdsProduit[]>(`${BASE_URL}/admin/fds/`);
+  getFdsByStatut(statut : string): Observable<FdsProduit[]> {
+    return this.http.get<FdsProduit[]>(`${BASE_URL}/admin/fds/${statut}`);
   }
 
   updateStatutFiche(ficheId: number, nouveauStatut: string): Observable<any> {

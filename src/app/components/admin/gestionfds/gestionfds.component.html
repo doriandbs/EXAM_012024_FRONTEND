@@ -1,3 +1,6 @@
+
+<button routerLink="/fds-inactive">FDS INACTIVE</button>
+
 <table mat-table [dataSource]="fds" class="mat-elevation-z8">
   
        <ng-container matColumnDef="nomFiche">
@@ -15,10 +18,6 @@
         <td mat-cell *matCellDef="let element"> {{ element.produitNom || 'Pas de produit associé' }} </td>
     </ng-container>
 
-    <ng-container matColumnDef="dateMajFiche">
-        <th mat-header-cell *matHeaderCellDef> Date Mise à Jour </th>
-        <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.dateMaj }} </td>
-    </ng-container>
 
     <ng-container matColumnDef="telecharger">
         <th mat-header-cell *matHeaderCellDef> Télécharger </th>
