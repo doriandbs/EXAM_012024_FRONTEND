@@ -1,16 +1,13 @@
-<div >
     <form (ngSubmit)="login()">
-      <h2>Connexion</h2>
-      <div >
-        <label for="nomsociete">Nom de la société</label>
-        <input type="text" id="nomsociete" [(ngModel)]="nomsociete" name="nomsociete" required>
-      </div>
-      <div >
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" required>
-      </div>
-      <button type="submit">Se connecter</button>
+      <h1>Connexion</h1>
+      <mat-form-field >
+        <mat-label for="nomsociete">Nom de la société</mat-label>
+        <input matInput type="text" id="nomsociete" [(ngModel)]="nomsociete" name="nomsociete" required>
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label for="password">Mot de passe</mat-label>
+        <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
+      </mat-form-field>
+      <button type="submit" mat-raised-button>Se connecter</button>
       <p *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
-  </div>
-  

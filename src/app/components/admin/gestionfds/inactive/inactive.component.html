@@ -1,5 +1,12 @@
+<div>
+  <button routerLink="/gestion-fds">Gestion FDS</button>
+  <button routerLink="/admin">Retour Accueil</button>
+</div>
+
+<h1>Liste FDS inactives</h1>
+
 <table mat-table [dataSource]="fds" class="mat-elevation-z8">
-  
+
     <ng-container matColumnDef="nomFiche">
      <th mat-header-cell *matHeaderCellDef> Nom de la Fiche </th>
      <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.name }} </td>
@@ -29,7 +36,7 @@
 
  <ng-container matColumnDef="statut">
      <th mat-header-cell *matHeaderCellDef> Statut </th>
-     <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.statut}}     
+     <td mat-cell *matCellDef="let element"> {{ element.ficheSecurite.statut}}
      </td>
  </ng-container>
 
